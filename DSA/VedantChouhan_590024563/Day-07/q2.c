@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char s[1000];
+
+    printf("Enter a string: ");
+    fgets(s, sizeof(s), stdin);
+
+    int len = strlen(s);
+
+    // Remove newline character if present
+    if (s[len - 1] == '\n') {
+        s[len - 1] = '\0';
+        len--;
+    }
+
+    int left = 0;
+    int right = len - 1;
+
+    while (left < right) {
+        char temp = s[left];
+        s[left] = s[right];
+        s[right] = temp;
+
+        left++;
+        right--;
+    }
+
+    printf("Reversed String: %s\n", s);
+
+    return 0;
+}
